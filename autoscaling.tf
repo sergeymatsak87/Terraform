@@ -4,6 +4,7 @@ resource "aws_launch_configuration" "lc_conf" {
   instance_type   = "t2.micro"
   security_groups = ["${aws_security_group.allow_ssh.id}"]
   key_name        = "deployer-key"
+  user_data       = "${file("userdata.sh")}"
 
   lifecycle {
     create_before_destroy = true
